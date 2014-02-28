@@ -8,6 +8,8 @@ such as a raspberry pi for security related task such as:
 - generting gpg certificates
 
 
+A usabe minimal base os image for the raspberry pi can be found here: http://sourceforge.net/projects/minibian/ 
+
 #### Features
 
 * Script which installes GPG2 from the source, including support for OpenPGP Smartcard 
