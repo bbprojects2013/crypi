@@ -72,6 +72,8 @@ function prepcompile {
 }
 
 function postcompile {
+  echo ""
+  echo "=== Removing build toolchain ==="
   apt-get -y remove build-essential automake libtool libpcsclite-dev libgusb-dev flex libudev-dev
   apt-get -y remove libpth-dev
   apt-get -y autoremove 
