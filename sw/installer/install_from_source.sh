@@ -69,6 +69,13 @@ function prepcompile {
   apt-get -y install libpth-dev
 }
 
+function postcompile {
+  apt-get -y remove build-essential automake libtool libpcsclite-dev libgusb-dev flex libudev-dev
+  apt-get -y remove libpth-dev
+  apt-get -y autoremove 
+  apt-get clean
+}
+
 function compile_install {
   THISPATH=$1
   echo ""
@@ -105,12 +112,22 @@ function compile_install {
   cd $DEST
 }
 
+function preparesystem { 
+  echo ""
+  echo "=== Install other dependencies ==="
+  apt-get -y install pcscd pinentry-curses
+  echo "pinentry-program /usr/bin/pinentry"  >>~/.gnupg/gpg-agent.conf
+}
 
+################################################################################
+###			main
+################################################################################
 initinvironment
 download
 verify
 extract
 prepcompile
+preparesystem
 compile_install libgpg-error-1.12
 compile_install libgcrypt-1.6.1
 compile_install libksba-1.3.0
@@ -118,3 +135,7 @@ compile_install libassuan-2.1.1
 compile_install ccid-1.4.15  
 ldconfig
 compile_install gnupg-2.0.22
+postcompile
+
+
+echo "Installation finished - please reboot now"
