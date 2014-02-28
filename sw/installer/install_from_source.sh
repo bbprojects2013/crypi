@@ -65,6 +65,8 @@ function extract {
 }
 
 function prepcompile {
+  echo ""
+  echo "=== Installing build toolchain ==="
   apt-get -y install build-essential automake libtool libpcsclite-dev libgusb-dev flex libudev-dev
   apt-get -y install libpth-dev
 }
