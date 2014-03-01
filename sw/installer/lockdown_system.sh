@@ -1,7 +1,18 @@
 #!/bin/bash
+#
+# This is just a small script for lockdown of the system
+# it will close down all ports and stop ssh daemon
+# additionally it will prevent the ssh daemon from starting again in the futur
+# funnily you can execute this script via ssh and work on the system until you disconnect
+# :-)
+#
+
 
 
 function initiallockdown {
+  echo ""
+  echo "locking down system"
+  
   /etc/init.d/ssh stop
   iptables -P INPUT ACCEPT
   iptables -P OUTPUT ACCEPT
@@ -29,6 +40,9 @@ function initiallockdown {
 
 
 function create_filewallscript {
+  echo ""
+  echo "Create the firewall script"
+  
   echo "iptables -P INPUT ACCEPT" >/etc/firewall
   echo "iptables -P OUTPUT ACCEPT" >>/etc/firewall
   echo "iptables -P FORWARD ACCEPT" >>/etc/firewall
@@ -59,8 +73,12 @@ function create_filewallscript {
   rm /tmp/rc.local_tmp
 }
 
-
-
+function rmssh {
+  echo ""
+  echo "Removing ssh from init system"
+  
+  find /etc/rc2.d/ -name "*ssh" -exec rm {} \;
+}
 
 
 ##########################################################################################
@@ -68,5 +86,6 @@ function create_filewallscript {
 ##########################################################################################
 initiallockdown
 create_filewallscript
+rmssh
 
 
