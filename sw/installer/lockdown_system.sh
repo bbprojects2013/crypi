@@ -41,9 +41,11 @@ function initiallockdown {
 
 function create_filewallscript {
   echo ""
-  echo "== Create the firewall script= = "
+  echo "== Create the firewall script == "
   
-  echo "iptables -P INPUT ACCEPT" >/etc/firewall
+  echo "#!/bin/bash">/etc/firewall
+  echo "" >>/etc/firewall
+  echo "iptables -P INPUT ACCEPT" >>/etc/firewall
   echo "iptables -P OUTPUT ACCEPT" >>/etc/firewall
   echo "iptables -P FORWARD ACCEPT" >>/etc/firewall
   echo "iptables -t nat -F" >>/etc/firewall
@@ -65,6 +67,7 @@ function create_filewallscript {
   echo "#drop everything else" >>/etc/firewall
   echo "iptables  -A INPUT -j DROP" >>/etc/firewall
   echo "ip6tables -A INPUT -j DROP" >>/etc/firewall
+  chmod 755 /etc/firewall
   
   cat /etc/rc.local |grep -v "exit 0" |grep -v "/etc/firewall" >/tmp/rc.local_tmp
   echo "/etc/firewall" >>/tmp/rc.local_tmp
