@@ -1,4 +1,4 @@
-/bin/bash
+#!/bin/bash
 #
 # This scripts prepares a raspberry pi system for using the 
 # HW random generator in the SOC
