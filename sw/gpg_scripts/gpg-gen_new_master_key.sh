@@ -16,7 +16,20 @@ rm -fr *
 mkdir -p $MYDIR
 chmod 700 $MYDIR
 
-gpg2 --home $MYDIR --list-keys
+### check the time
+echo "Befor we begin - lets check the time. Is it: $( date )? (y/n)"
+read DATECORRECT
+#echo "Aswer: $DATECORRECT"
+if [ "$DATECORRECT" != "y" ];
+then
+  echo "Please set the time"
+  echo "This can be done with the following command"
+  echo 'date -s "2 OCT 2006 18:00:00"'
+  exit 0
+fi
+
+###generate the keyring files
+gpg2 --home $MYDIR --list-keys >/dev/null
 
 echo ""
 echo "=============================================================="
@@ -31,13 +44,9 @@ echo "=============================================================="
 echo ""
 echo ""
 
+###gen the keys
 gpg2 --home $MYDIR --gen-key
 
 export MASTERKEY_id=$( gpg2 --home $MYDIR --list-secret-keys |grep sec|grep -v ".gpg"| cut -b 13-20 )
 echo "$MASTERKEY_id" >$BASEDIR/masterid
 echo "Master key id is $MASTERKEY_id"
-
-
-#backup the file
-mkdir -p $BACKUP
-cd $BASEDIR/ &&  tar czf $BACKUP/secret_master_key.tar.gz ./gpg
