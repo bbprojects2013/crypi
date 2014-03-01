@@ -12,3 +12,6 @@ do
 done
 
  
+
+mkdir /usr/local/lib/crypi
+cp gpg.conf_sample /usr/local/lib/crypi/
