@@ -7,7 +7,7 @@ function initinvironment {
  echo "=== Creating destination dir ===" 
  echo "Install wget"
  apt-get -q update
- apt-get -y install wget
+ apt-get -y install wget curl
  mkdir $DEST
  cd $DEST
 }
@@ -33,8 +33,8 @@ function download {
 function verify {
  echo ""
  echo "=== Get Signatur keys ==="
- wget -c https://raw.github.com/bbprojects2013/crypi/master/sw/installer/sig_keys/pub_key_Werner_Koch.key
- wget -c https://raw.github.com/bbprojects2013/crypi/master/sw/installer/sig_keys/pub_key_Ludovic_Rousseau.key
+ curl https://raw.github.com/bbprojects2013/crypi/master/sw/installer/sig_keys/pub_key_Werner_Koch.key >pub_key_Werner_Koch.key
+ curl https://raw.github.com/bbprojects2013/crypi/master/sw/installer/sig_keys/pub_key_Ludovic_Rousseau.key >pub_key_Ludovic_Rousseau.key
  gpg --import pub_key_Werner_Koch.key
  gpg --import pub_key_Ludovic_Rousseau.key
  rm *.key

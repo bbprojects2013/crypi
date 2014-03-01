@@ -5,7 +5,7 @@
 
 
 apt-get update
-apt-get -y install joe screen
+apt-get -y install joe screen git
 
 echo "Set the timezone to Berlin"
 cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
