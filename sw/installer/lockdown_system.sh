@@ -11,7 +11,7 @@
 
 function initiallockdown {
   echo ""
-  echo "locking down system"
+  echo "== locking down system =="
   
   /etc/init.d/ssh stop
   iptables -P INPUT ACCEPT
@@ -41,7 +41,7 @@ function initiallockdown {
 
 function create_filewallscript {
   echo ""
-  echo "Create the firewall script"
+  echo "== Create the firewall script= = "
   
   echo "iptables -P INPUT ACCEPT" >/etc/firewall
   echo "iptables -P OUTPUT ACCEPT" >>/etc/firewall
@@ -75,7 +75,7 @@ function create_filewallscript {
 
 function rmssh {
   echo ""
-  echo "Removing ssh from init system"
+  echo "== Removing ssh from init system =="
   
   find /etc/rc2.d/ -name "*ssh" -exec rm {} \;
 }
