@@ -34,8 +34,9 @@ echo ""
 gpg2 --home $MYDIR --gen-key
 
 export MASTERKEY_id=$( gpg2 --home $MYDIR --list-secret-keys |grep sec|grep -v ".gpg"| cut -b 13-20 )
-echo "export MASTERKEY_id=$MASTERKEY_id" >$RAMDISK/masterid.sh
-chmod 755 $RAMDISK/masterid.sh
+echo "$MASTERKEY_id" >$BASEDIR/masterid
+echo "Master key id is $MASTERKEY_id"
+
 
 #backup the file
 mkdir -p $BACKUP
