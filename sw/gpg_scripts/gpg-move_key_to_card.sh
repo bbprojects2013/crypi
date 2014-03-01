@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# This scripts create new signkey in the ramdisk
-# generate new masterkey has to be run before
+# This scripts helps in moving the keys to a open pgp card
 # workflow was taken from here: https://wiki.fsfe.org/Card_howtos/Card_with_subkeys_using_backups
 # thanks!
 #
