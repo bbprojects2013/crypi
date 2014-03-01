@@ -6,13 +6,14 @@
 #
 
 RAMDISK=/ramdisk
-MYDIR=$RAMDISK/gpg
-$BACKUP=$RAMDISK/backupbundles
+BASEDIR=$RAMDISK/gpgtmp
+MYDIR=$BASEDIR/gpg
+BACKUP=$BASEDIR/backupbundles
 
+mkdir -p $BASEDIR
+cd $BASEDIR
+rm -fr *
 mkdir -p $MYDIR
-rm -f $MYDIR/*
-rm -f $RAMDISK/*
-rm -f $BACKUP/*
 chmod 700 $MYDIR
 
 gpg2 --home $MYDIR --list-keys
@@ -37,5 +38,5 @@ echo "export MASTERKEY_id=$MASTERKEY_id" >$RAMDISK/masterid.sh
 chmod 755 $RAMDISK/masterid.sh
 
 #backup the file
-mkdir $BACKUP
-cd $RAMDISK/ &&  tar czf $BACKUP/secret_master_key.tar.gz ./gpg
+mkdir -p $BACKUP
+cd $BASEDIR/ &&  tar czf $BACKUP/secret_master_key.tar.gz ./gpg
