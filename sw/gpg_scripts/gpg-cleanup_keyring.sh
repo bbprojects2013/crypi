@@ -88,7 +88,7 @@ echo "=============================================================="
 echo ""
 echo ""
 
-cp gpg.conf_sample $MYDIR/gpg.conf
+cp /usr/local/lib/crypi/gpg.conf_sample $MYDIR/gpg.conf
 echo "hidden-encrypt-to 0x$ENC_ID!" >>$MYDIR/gpg.conf
 echo "hidden-encrypt-to 0x$MASTERENCRYPTION_ID!" >>$MYDIR/gpg.conf
 echo "default-recipient 0x$ENC_ID!" >>$MYDIR/gpg.conf
