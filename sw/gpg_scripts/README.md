@@ -12,7 +12,8 @@ creating files which contain the backup. The scripts should be called in the fol
 5) gpg-move_key_to_card.sh
 6) gpg-cleanup_keyring.sh
 7) gpg-wrapup.sh
-8) (optional) import the file publickey.asc in your current system, sign the key with your old GPG key and send this key to key servers
+8) (optional) import the file publickey.asc in your current system, 
+   sign the key with your old GPG key and send this key to key servers
 ```
 
 Workflow was taken from https://wiki.fsfe.org/Card_howtos/Card_with_subkeys_using_backups
