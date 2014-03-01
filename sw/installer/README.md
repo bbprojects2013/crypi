@@ -8,6 +8,7 @@ which can be used with a open-pgp-smartcard (https://www.google.de/search?q=open
 wget https://raw.github.com/bbprojects2013/crypi/master/sw/installer/install_gpg2_from_source.sh
 chmod 755 install_gpg2_from_source.sh
 ./install_gpg2_from_source.sh
+```
 
 __install_r-pi_hw_random.sh:__
 This script installes the necessary components for using the HW random generator in the 
