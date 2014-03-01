@@ -23,3 +23,6 @@ Prepare the system for crypto work (config RAM Disk e.c.)
 
 __personalize_system.sh:__
 Just some personalisation of the system to my (German) needs :-)
+
+__run_all.sh:__
+run all scripts in the right order
