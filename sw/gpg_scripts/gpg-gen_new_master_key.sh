@@ -31,6 +31,22 @@ fi
 ###generate the keyring files
 gpg2 --home $MYDIR --list-keys >/dev/null
 
+##wed have to make sure in our normal homedir is a gpg-agent config file  and it has 
+# a pinentry program defined
+gpg2 --list-keys >/dev/null    #generate the .gnupgp path in home if necessary
+if [ ! -f ~/.gnupg/gpg-agent.conf ]; then
+    echo "Creating gpg-agent.conf file"
+    touch ~/.gnupg/gpg-agent.conf
+fi
+
+#check if the gpg-agent has a pinentry program defined
+cat ~/.gnupg/gpg-agent.conf |grep "pinentry-program" >/dev/null
+EXCODE=$?
+if [ $EXCODE -ne 0 ]; then
+    echo "configuring gpg-agent with pinentry-program /usr/bin/pinentry"
+    echo "pinentry-program /usr/bin/pinentry" >>~/.gnupg/gpg-agent.conf 
+fi
+
 echo ""
 echo "=============================================================="
 echo "===== I will now create a new master key ====="
