@@ -5,7 +5,7 @@
 
 
 apt-get update
-apt-get -y install joe screen git dosfstools gpm
+apt-get -y install joe screen git dosfstools gpm pwgen
 
 echo "Set the timezone to Berlin"
 cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
